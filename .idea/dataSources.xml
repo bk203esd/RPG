@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="rpg@localhost" uuid="2bdcbb6a-f334-4c99-8030-53cbc2e99d88">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/rpg</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="rpgauth@localhost" uuid="a5d19245-57dd-4854-9841-e80866da4269">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/rpgauth</jdbc-url>
+    </data-source>
+  </component>
+</project>
