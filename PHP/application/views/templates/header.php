@@ -7,7 +7,7 @@
 	<script src="<?php echo base_url('assets/libs/ckeditor/ckeditor.js') ?>"></script>
 </head>
 
-<body>
-<header class="w3-container w3-teal">
+<body class="w3-light-gray">
+<header class="w3-container w3-blue-gray">
 	<h1>RPG DAW2 Guillem Mora Bea</h1>
 </header>
