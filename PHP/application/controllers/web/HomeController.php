@@ -26,6 +26,7 @@ class HomeController extends CI_Controller
 
 		$this->load->view('templates/header');
 		$this->load->view('pages/home');
+		$this->load->view('pages/BigMenu');
 		$this->load->view('templates/footer');
 	}
 }
