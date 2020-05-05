@@ -66,4 +66,14 @@ class ClassController extends CI_Controller
 			redirect('classes');
 		}
 	}
+
+	public function viewClass($name)
+	{
+		$contentData['class'] = $this->classe->getClassByName($name);
+
+		$this->load->view('templates/header');
+		$this->load->view('templates/menu');
+		$this->load->view('pages/clas', $contentData);
+		$this->load->view('templates/footer');
+	}
 }

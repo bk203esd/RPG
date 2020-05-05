@@ -20,9 +20,10 @@
 							<td> " . $class->getMultiplyAttack() . "</td>
 							<td> " . $class->getMultiplyDefense() . "</td>
 							<td> " . $class->getMultiplyAccuracy() . "</td>
+							<td><a class=\"w3-button\" href=" . base_url('class/' . $class->getClasName()) . ">Veure</a></td>
 ";
 		}
 		?>
 	</table>
-	<a class="w3-button" href="<?php echo base_url('class/add'); ?>">Añadir nueva classe</a>
+	<a class="w3-button" href="<?php echo base_url('classadd'); ?>">Añadir nueva classe</a>
 </div>

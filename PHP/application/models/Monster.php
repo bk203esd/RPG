@@ -91,7 +91,7 @@ class Monster extends CI_Model
 
 		// Generar a partir del resultat de la query, una array de tipus Monster
 		foreach ($query->result() as $data) {
-			$monster = $this->createRaceFromRawObject($data);
+			$monster = $this->createMonsterFromRawObject($data);
 			array_push($monsters, $monster);
 		}
 

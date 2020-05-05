@@ -1,5 +1,4 @@
 <?php
-// TODO vistes
 
 class Race extends CI_Model
 {

@@ -1,39 +1,55 @@
-<div class="w3-container">
-		<div class="w3-cell w3-center w3-lime w3-container">
-			<div class="w3-container w3-jumbo">Classes</div>
-			<div class="w3-container">
-				<div class="w3-cell-row w3-xlarge">
-					<div class="w3-container w3-cell">Crear</div>
-					<div class="w3-container w3-cell">Lista</div>
-				</div>
+<div class="w3-row-padding w3-margin w3-margin-top">
+	<div class="w3-half">
+		<div class="w3-card w3-container">
+			<div class="w3-jumbo w3-center">Classe</div>
+			<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
+				<a class="w3-half w3-blue  w3-button" href="<?php echo base_url('classes');?>">
+					Listar
+				</a>
+				<a class="w3-half w3-green  w3-button" href="<?php echo base_url('classadd');?>">
+					Crear
+				</a>
 			</div>
 		</div>
-		<div class="w3-cell w3-center">
-			<div class="w3-container w3-jumbo">Razas</div>
-			<div class="w3-container">
-				<div class="w3-cell-row w3-xlarge">
-					<div class="w3-container w3-cell">Crear</div>
-					<div class="w3-container w3-cell">Lista</div>
-				</div>
+	</div>
+	<div class="w3-half">
+		<div class="w3-card w3-container">
+			<div class="w3-jumbo w3-center">Raza</div>
+			<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
+				<a class="w3-half w3-blue  w3-button" href="<?php echo base_url('races');?>">
+					Listar
+				</a>
+				<a class="w3-half w3-green  w3-button" href="<?php echo base_url('raceadd');?>">
+					Crear
+				</a>
 			</div>
 		</div>
-</div>
-
-
-
-
-
-
-
-
-
-<!--<div class="w3-container">
-	<div class="w3-cell-row">
-		<div class="w3-jumbo w3-cell w3-container">Classes
-			<div class="w3-xlarge w3-cell w3-container">Crear</div>
-			<div class="w3-xlarge w3-cell w3-container">Listar</div>
+	</div>
+</div><div class="w3-row-padding w3-margin w3-margin-top">
+	<div class="w3-half">
+		<div class="w3-card w3-container">
+			<div class="w3-jumbo w3-center">Item</div>
+			<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
+				<a class="w3-half w3-blue  w3-button" href="<?php echo base_url('items');?>">
+					Listar
+				</a>
+				<a class="w3-half w3-green  w3-button" href="<?php echo base_url('itemadd');?>">
+					Crear
+				</a>
+			</div>
 		</div>
-		<div class="w3-jumbo w3-cell w3-container">Razas</div>
+	</div>
+	<div class="w3-half">
+		<div class="w3-card w3-container">
+			<div class="w3-jumbo w3-center">Monstruo</div>
+			<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
+				<a class="w3-half w3-blue  w3-button" href="<?php echo base_url('monsters');?>">
+					Listar
+				</a>
+				<a class="w3-half w3-green  w3-button" href="<?php echo base_url('monsteradd');?>">
+					Crear
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
--->

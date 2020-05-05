@@ -20,9 +20,10 @@
 							<td> " . $race->getMultiplyAttack() . "</td>
 							<td> " . $race->getMultiplyDefense() . "</td>
 							<td> " . $race->getMultiplyAccuracy() . "</td>
+							<td><a class=\"w3-button\" href=" . base_url('race/' . $race->getRaceName()) . ">Veure</a></td>
 ";
 		}
 		?>
 	</table>
-	<a class="w3-button" href="<?php echo base_url('race/add'); ?>">Añadir nueva raza</a>
+	<a class="w3-button" href="<?php echo base_url('raceadd'); ?>">Añadir nueva raza</a>
 </div>

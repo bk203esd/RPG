@@ -66,4 +66,14 @@ class RaceController extends CI_Controller
 			redirect('races');
 		}
 	}
+
+	public function viewRace($name)
+	{
+		$contentData['race'] = $this->race->getRaceByName($name);
+
+		$this->load->view('templates/header');
+		$this->load->view('templates/menu');
+		$this->load->view('pages/race', $contentData);
+		$this->load->view('templates/footer');
+	}
 }
