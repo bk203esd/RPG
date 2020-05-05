@@ -1,7 +1,7 @@
 <div class="w3-row-padding w3-margin w3-margin-top">
 	<div class="w3-half">
 		<div class="w3-card w3-container">
-			<div class="w3-jumbo w3-center">Classe</div>
+			<div class="w3-xxxlarge w3-center">Classe</div>
 			<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
 				<a class="w3-half w3-blue  w3-button" href="<?php echo base_url('classes');?>">
 					Listar
@@ -14,7 +14,7 @@
 	</div>
 	<div class="w3-half">
 		<div class="w3-card w3-container">
-			<div class="w3-jumbo w3-center">Raza</div>
+			<div class="w3-xxxlarge w3-center">Raza</div>
 			<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
 				<a class="w3-half w3-blue  w3-button" href="<?php echo base_url('races');?>">
 					Listar
@@ -28,7 +28,7 @@
 </div><div class="w3-row-padding w3-margin w3-margin-top">
 	<div class="w3-half">
 		<div class="w3-card w3-container">
-			<div class="w3-jumbo w3-center">Item</div>
+			<div class="w3-xxxlarge w3-center">Item</div>
 			<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
 				<a class="w3-half w3-blue  w3-button" href="<?php echo base_url('items');?>">
 					Listar
@@ -41,7 +41,7 @@
 	</div>
 	<div class="w3-half">
 		<div class="w3-card w3-container">
-			<div class="w3-jumbo w3-center">Monstruo</div>
+			<div class="w3-xxxlarge w3-center">Monstruo</div>
 			<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
 				<a class="w3-half w3-blue  w3-button" href="<?php echo base_url('monsters');?>">
 					Listar

@@ -9,5 +9,5 @@
 
 <body class="w3-light-gray">
 <header class="w3-container w3-blue-gray">
-	<h1>RPG DAW2 Guillem Mora Bea</h1>
+	<h1>Desarrollo de Aplicaciones Web 2</h1>
 </header>
