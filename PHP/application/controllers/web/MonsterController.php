@@ -26,8 +26,9 @@ class MonsterController extends CI_Controller
 	public function viewMonsters()
 	{
 		$contentData['monsters'] = $this->monster->getMonsters();
+		$headerData['uname'] = $this->session->userdata('username');
 
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $headerData);
 		$this->load->view('templates/menu');
 		$this->load->view('pages/monsters', $contentData);
 		$this->load->view('templates/footer');
@@ -50,8 +51,9 @@ class MonsterController extends CI_Controller
 
 		if ($this->form_validation->run() === false) {
 			$contentData['monsters'] = $this->monster->getMonsters();
+			$headerData['uname'] = $this->session->userdata('username');
 
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $headerData);
 			$this->load->view('templates/menu');
 			$this->load->view('pages/add_monster', $contentData);
 			$this->load->view('templates/footer');
@@ -73,8 +75,9 @@ class MonsterController extends CI_Controller
 
 	public function viewMonster($name){
 		$contentData['monster'] = $this->monster->getMonsterByName($name);
+		$headerData['uname'] = $this->session->userdata('username');
 
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $headerData);
 		$this->load->view('templates/menu');
 		$this->load->view('pages/monster', $contentData);
 		$this->load->view('templates/footer');

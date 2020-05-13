@@ -13,6 +13,16 @@ class HomeController extends CI_Controller
 
 		/** Càrrega de helpers */
 		$this->load->helper('url');
+
+		$this->load->library('ion_auth');
+
+		if ($this->ion_auth->logged_in()) {
+			// session_start() -> accés $_SESSION
+			$this->load->library('session');
+		} else {
+			// redirecció al login
+			redirect('login', 'refresh');
+		}
 	}
 
 	/** Funció per carregar les pàgines */
@@ -23,8 +33,9 @@ class HomeController extends CI_Controller
 			show_404();
 		}
 
+		$headerData['uname'] = $this->session->userdata('username');
 
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $headerData);
 		$this->load->view('pages/home');
 		$this->load->view('pages/BigMenu');
 		$this->load->view('templates/footer');

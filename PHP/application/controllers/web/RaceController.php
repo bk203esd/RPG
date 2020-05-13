@@ -26,8 +26,9 @@ class RaceController extends CI_Controller
 	public function viewRaces()
 	{
 		$contentData['races'] = $this->race->getRaces();
+		$headerData['uname'] = $this->session->userdata('username');
 
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $headerData);
 		$this->load->view('templates/menu');
 		$this->load->view('pages/races', $contentData);
 		$this->load->view('templates/footer');
@@ -48,8 +49,9 @@ class RaceController extends CI_Controller
 
 		if ($this->form_validation->run() === false) {
 			$contentData['races'] = $this->race->getRaces();
+			$headerData['uname'] = $this->session->userdata('username');
 
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $headerData);
 			$this->load->view('templates/menu');
 			$this->load->view('pages/add_race', $contentData);
 			$this->load->view('templates/footer');
@@ -70,8 +72,9 @@ class RaceController extends CI_Controller
 	public function viewRace($name)
 	{
 		$contentData['race'] = $this->race->getRaceByName($name);
+		$headerData['uname'] = $this->session->userdata('username');
 
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $headerData);
 		$this->load->view('templates/menu');
 		$this->load->view('pages/race', $contentData);
 		$this->load->view('templates/footer');

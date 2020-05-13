@@ -9,7 +9,6 @@ class Item extends CI_Model
 	private $defense_increase;
 	private $accuracy_increase;
 	private $price;
-	private $img;
 
 	public function getItemName()
 	{
@@ -41,11 +40,6 @@ class Item extends CI_Model
 		return $this->price;
 	}
 
-	public function getImg()
-	{
-		return $this->img;
-	}
-
 	public function __construct()
 	{
 		$this->item_name = '';
@@ -54,7 +48,6 @@ class Item extends CI_Model
 		$this->defense_increase = '';
 		$this->accuracy_increase = '';
 		$this->price = '';
-		$this->img = '';
 
 		// Càrrega i obertura de la BBD
 		$this->load->database('rpg');
@@ -70,7 +63,6 @@ class Item extends CI_Model
 		$item->defense_increase = $data->defense_increase;
 		$item->accuracy_increase = $data->accuracy_increase;
 		$item->price = $data->price;
-		$item->img = $data->img;
 
 		return $item;
 	}
@@ -93,15 +85,16 @@ class Item extends CI_Model
 	public function getItemByName($name)
 	{
 		// Generar query amb la condició del nom
-		$condition = array('item_name' => $name);
-		$query = $this->db->get_where('items', $condition);
+		$condition = "UPPER(item_name) = UPPER('" . $name . "')";
+		$this->db->where($condition);
+		$query = $this->db->get('items');
 
 		// Comprovar si hi ha algun resultat
 		if ($query->num_rows() != 1) return null;
 		else return $this->createItemFromRawObject($query->result()[0]);
 	}
 
-	public function addNewItem($item_name, $description, $attack_increase, $defense_increase, $accuracy_increase, $price, $img)
+	public function addNewItem($item_name, $description, $attack_increase, $defense_increase, $accuracy_increase, $price)
 	{
 		// Creació array de Item
 		$data = array(
@@ -111,10 +104,21 @@ class Item extends CI_Model
 			'defense_increase' => $defense_increase,
 			'accuracy_increase' => $accuracy_increase,
 			'price' => $price,
-			'img' => $img
 		);
 
 		// Insertar a la BBDD
 		$this->db->insert('items', $data);
+	}
+
+	public function toArray()
+	{
+		return array(
+			'item_name' => $this->item_name,
+			'description' => $this->description,
+			'attack_increase' => $this->attack_increase,
+			'defense_increase' => $this->defense_increase,
+			'accuracy_increase' => $this->accuracy_increase,
+			'price' => $this->price
+		);
 	}
 }

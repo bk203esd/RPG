@@ -1,14 +1,14 @@
 <?php
 
 
-class ClassController extends CI_Controller
+class QuestController extends CI_Controller
 {
 	public function __construct()
 	{
 		// Carrega del controllador
 		parent::__construct();
 
-		$this->load->model('classe');
+		$this->load->model('quest');
 
 		$this->load->helper('url');
 
@@ -23,60 +23,61 @@ class ClassController extends CI_Controller
 		}
 	}
 
-	public function viewClasses()
+	public function viewQuests()
 	{
-		$contentData['classes'] = $this->classe->getClasses();
+		$contentData['quests'] = $this->quest->getQuests();
 		$headerData['uname'] = $this->session->userdata('username');
 
 		$this->load->view('templates/header', $headerData);
 		$this->load->view('templates/menu');
-		$this->load->view('pages/classes', $contentData);
+		$this->load->view('pages/quests', $contentData);
 		$this->load->view('templates/footer');
 	}
 
-	public function addNewClass()
+	public function addNewQuest()
 	{
 		// carregar llibreria validador formulari
 		$this->load->library('form_validation');
 
 		// parametres de restricció
-		$this->form_validation->set_rules('clas_name', 'Nombre', 'required');
+		$this->form_validation->set_rules('quest_name', 'Nombre', 'required');
 		$this->form_validation->set_rules('description', 'Descripción', 'required');
-		$this->form_validation->set_rules('multiply_hp', 'Multiplicador HP', 'required');
-		$this->form_validation->set_rules('multiply_attack', 'Multiplicador Ataque', 'required');
-		$this->form_validation->set_rules('multiply_defense', 'Multiplicador Defensa', 'required');
-		$this->form_validation->set_rules('multiply_accuracy', 'Multiplicador Precisió', 'required');
+		$this->form_validation->set_rules('item_reward', 'Item', 'required');
+		$this->form_validation->set_rules('quantity_item', 'Quanity', 'required');
+		$this->form_validation->set_rules('gold_reward', 'Oro', 'required');
+		$this->form_validation->set_rules('xp_reward', 'Experiencia', 'required');
+		$this->form_validation->set_rules('repeatable', 'Repetible', 'required');
 
 		if ($this->form_validation->run() === false) {
-			$contentData['classes'] = $this->classe->getClasses();
+			$contentData['quests'] = $this->quest->getQuests();
 			$headerData['uname'] = $this->session->userdata('username');
 
 			$this->load->view('templates/header', $headerData);
 			$this->load->view('templates/menu');
-			$this->load->view('pages/add_class', $contentData);
+			$this->load->view('pages/add_quest', $contentData);
 			$this->load->view('templates/footer');
 		} else {
 			// formulari correcte
-			$this->classe->addNewClass(
-				$this->input->post('clas_name'),
+			$this->quest->addNewQuest(
+				$this->input->post('quest_name'),
 				$this->input->post('description'),
-				$this->input->post('multiply_hp'),
-				$this->input->post('multiply_attack'),
-				$this->input->post('multiply_defense'),
-				$this->input->post('multiply_accuracy')
+				$this->input->post('item_reward'),
+				$this->input->post('quantity_item'),
+				$this->input->post('gold_reward'),
+				$this->input->post('xp_reward'),
+				$this->input->post('repeatable')
 			);
-			redirect('classes');
+			redirect('quests');
 		}
 	}
 
-	public function viewClass($name)
-	{
-		$contentData['class'] = $this->classe->getClassByName($name);
+	public function viewQuest($name){
+		$contentData['quest'] = $this->monster->getQuestByName($name);
 		$headerData['uname'] = $this->session->userdata('username');
 
 		$this->load->view('templates/header', $headerData);
 		$this->load->view('templates/menu');
-		$this->load->view('pages/clas', $contentData);
+		$this->load->view('pages/quest', $contentData);
 		$this->load->view('templates/footer');
 	}
 }

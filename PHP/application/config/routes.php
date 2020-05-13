@@ -49,18 +49,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['quest/(:any)'] = 'web/QuestController/viewQuest/$1';
 $route['item/(:any)'] = 'web/ItemController/viewItem/$1';
 $route['monster/(:any)'] = 'web/MonsterController/viewMonster/$1';
 $route['class/(:any)'] = 'web/ClassController/viewClass/$1';
 $route['race/(:any)'] = 'web/RaceController/viewRace/$1';
+$route['questadd'] = 'web/QuestController/addNewQuest';
 $route['monsteradd'] = 'web/MonsterController/addNewMonster';
-$route['monsters'] = 'web/MonsterController/viewMonsters';
 $route['itemadd'] = 'web/ItemController/addNewItem';
-$route['items'] = 'web/ItemController/viewItems';
 $route['classadd'] = 'web/ClassController/addNewClass';
-$route['classes'] = 'web/ClassController/viewClasses';
 $route['raceadd'] = 'web/RaceController/addNewRace';
+$route['quests'] = 'web/QuestController/viewQuests';
+$route['monsters'] = 'web/MonsterController/viewMonsters';
+$route['items'] = 'web/ItemController/viewItems';
+$route['classes'] = 'web/ClassController/viewClasses';
 $route['races'] = 'web/RaceController/viewRaces';
+$route['logout'] = 'web/SessionController/logout';
 $route['login'] = 'web/SessionController/login';
 $route['home'] = 'web/HomeController/view';
 $route['default_controller'] = 'web/HomeController/view';

@@ -84,9 +84,9 @@ class Classe extends CI_Model
 
 	public function getClassByName($name)
 	{
-		// Generar query amb la condició del nom
-		$condition = array('clas_name' => $name);
-		$query = $this->db->get_where('classes', $condition);
+		$condition = "UPPER(clas_name) = UPPER('" . $name . "')";
+		$this->db->where($condition);
+		$query = $this->db->get('classes');
 
 		// Comprovar si hi ha algun resultat
 		if ($query->num_rows() != 1) return null;
@@ -107,5 +107,17 @@ class Classe extends CI_Model
 
 		// Insertar a la BBDD
 		$this->db->insert('classes', $data);
+	}
+
+	public function toArray()
+	{
+		return array(
+			'clas_name' => $this->clas_name,
+			'description' => $this->description,
+			'multiply_hp' => $this->multiply_hp,
+			'multiply_attack' => $this->multiply_attack,
+			'multiply_defense' => $this->multiply_defense,
+			'multiply_accuracy' => $this->multiply_accuracy
+		);
 	}
 }

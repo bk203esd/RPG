@@ -101,8 +101,9 @@ class Monster extends CI_Model
 	public function getMonsterByName($name)
 	{
 		// Generar query amb la condició del nom
-		$condition = array('monster_name' => $name);
-		$query = $this->db->get_where('monsters', $condition);
+		$condition = "UPPER(monster_name) = UPPER('" . $name . "')";
+		$this->db->where($condition);
+		$query = $this->db->get('monsters');
 
 		// Comprovar si hi ha algun resultat
 		if ($query->num_rows() != 1) return null;
@@ -125,5 +126,19 @@ class Monster extends CI_Model
 
 		// Insertar a la BBDD
 		$this->db->insert('monsters', $data);
+	}
+
+	public function toArray()
+	{
+		return array(
+			'monster_name' => $this->monster_name,
+			'description' => $this->description,
+			'hp' => $this->hp,
+			'attack' => $this->attack,
+			'defense' => $this->defense,
+			'accuracy' => $this->accuracy,
+			'gold' => $this->gold,
+			'xp_give' => $this->xp_give
+		);
 	}
 }

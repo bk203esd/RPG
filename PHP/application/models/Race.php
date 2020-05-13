@@ -84,9 +84,9 @@ class Race extends CI_Model
 	public function getRaceByName($name)
 	{
 		// Generar query amb la condició del nom
-		$condition = array('race_name' => $name);
-		$query = $this->db->get_where('races', $condition);
-
+		$condition = "UPPER(race_name) = UPPER('" . $name . "')";
+		$this->db->where($condition);
+		$query = $this->db->get('races');
 		// Comprovar si hi ha algun resultat
 		if ($query->num_rows() != 1) return null;
 		else return $this->createRaceFromRawObject($query->result()[0]);
@@ -106,5 +106,17 @@ class Race extends CI_Model
 
 		// Insertar a la BBDD
 		$this->db->insert('races', $data);
+	}
+
+	public function toArray()
+	{
+		return array(
+			'race_name' => $this->race_name,
+			'description' => $this->description,
+			'multiply_hp' => $this->multiply_hp,
+			'multiply_attack' => $this->multiply_attack,
+			'multiply_defense' => $this->multiply_defense,
+			'multiply_accuracy' => $this->multiply_accuracy
+		);
 	}
 }

@@ -44,4 +44,26 @@ class SessionController extends CI_Controller
 			}
 		}
 	}
+
+	public function logout()
+	{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('logout', 'Opción', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			// La primera vegada que entro a la pàgina login
+			$this->load->view('templates/header');
+			$this->load->view('pages/logout');
+			$this->load->view('templates/footer');
+
+		} else {
+			if ($this->input->post('logout') == 'Si') {
+				if ($this->ion_auth->logout()) {
+					redirect('login', 'refresh');
+				}
+			} else {
+				redirect('home', 'refresh');
+			}
+		}
+	}
 }

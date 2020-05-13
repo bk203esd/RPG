@@ -3,17 +3,13 @@
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
 				<div class="w3-xxlarge">Nombre</div>
-				<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
-					<?php echo $class->getClasName(); ?>
-				</div>
+				<input type="text" value="<?php echo $class->getClasName(); ?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
 				<div class="w3-xxlarge">Descripción</div>
-				<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
-					<?php echo $class->getDescription(); ?>
-				</div>
+				<input type="text" value="<?php echo $class->getDescription(); ?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 	</div>
@@ -21,17 +17,13 @@
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
 				<div class="w3-xxlarge">Multiplicador HP</div>
-				<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
-					<?php echo $class->getMultiplyHp(); ?>
-				</div>
+				<input type="text" value="<?php echo $class->getMultiplyHp(); ?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
 				<div class="w3-xxlarge">Multiplicador Ataque</div>
-				<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
-					<?php echo $class->getMultiplyAttack();?>
-				</div>
+				<input type="text" value="<?php echo $class->getMultiplyAttack();?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 	</div>
@@ -39,17 +31,13 @@
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
 				<div class="w3-xxlarge">Multiplicador Defensa</div>
-				<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
-					<?php echo $class->getMultiplyDefense();?>
-				</div>
+				<input type="text" value="<?php echo $class->getMultiplyDefense();?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
 				<div class="w3-xxlarge">Multiplicador Precisión</div>
-				<div class="w3-row-padding w3-margin w3-margin-top w3-xlarge">
-					<?php echo $class->getMultiplyAccuracy();?>
-				</div>
+				<input type="text" value="<?php echo $class->getMultiplyAccuracy();?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 	</div>

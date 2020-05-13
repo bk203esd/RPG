@@ -9,7 +9,6 @@
 			<th>Incremento Defensa</th>
 			<th>Incremento Precisión</th>
 			<th>Precio</th>
-			<th>Imagen</th>
 		</tr>
 		<?php
 		foreach ($items as $item) {
@@ -21,7 +20,6 @@
 							<td> " . $item->getDefenseIncrease() . "</td>
 							<td> " . $item->getAccuracyIncrease() . "</td>
 							<td> " . $item->getPrice() . "</td>
-							<td> " . $item->getImg() . "</td>
 							<td><a class=\"w3-button\" href=" . base_url('item/' . $item->getItemName()) . ">Veure</a></td>
 ";
 		}

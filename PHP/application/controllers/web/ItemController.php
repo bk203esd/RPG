@@ -26,8 +26,9 @@ class ItemController extends CI_Controller
 	public function viewItems()
 	{
 		$contentData['items'] = $this->item->getItems();
+		$headerData['uname'] = $this->session->userdata('username');
 
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $headerData);
 		$this->load->view('templates/menu');
 		$this->load->view('pages/items', $contentData);
 		$this->load->view('templates/footer');
@@ -45,12 +46,12 @@ class ItemController extends CI_Controller
 		$this->form_validation->set_rules('defense_increase', 'Incremento Defensa', 'required');
 		$this->form_validation->set_rules('accuracy_increase', 'Incremento Precisión', 'required');
 		$this->form_validation->set_rules('price', 'Precio', 'required');
-		$this->form_validation->set_rules('img', 'Imagen', 'required');
 
 		if ($this->form_validation->run() === false) {
 			$contentData['items'] = $this->item->getItems();
+			$headerData['uname'] = $this->session->userdata('username');
 
-			$this->load->view('templates/header');
+			$this->load->view('templates/header', $headerData);
 			$this->load->view('templates/menu');
 			$this->load->view('pages/add_item', $contentData);
 			$this->load->view('templates/footer');
@@ -63,7 +64,6 @@ class ItemController extends CI_Controller
 				$this->input->post('defense_increase'),
 				$this->input->post('accuracy_increase'),
 				$this->input->post('price'),
-				$this->input->post('img')
 			);
 			redirect('items');
 		}
@@ -72,8 +72,9 @@ class ItemController extends CI_Controller
 	public function viewItem($name)
 	{
 		$contentData['item'] = $this->item->getItemByName($name);
+		$headerData['uname'] = $this->session->userdata('username');
 
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $headerData);
 		$this->load->view('templates/menu');
 		$this->load->view('pages/item', $contentData);
 		$this->load->view('templates/footer');
