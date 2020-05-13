@@ -25,6 +25,7 @@
     "@ionic/angular": "^5.0.0",
     "@okta/okta-angular": "^2.0.0",
     "@okta/okta-signin-widget": "^4.0.0",
+    "chart.js": "^2.9.3",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",

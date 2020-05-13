@@ -1,3 +1,30 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <ion-menu menuId="menu1" contentId="main">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Menú</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <!--                TODO RouterLink en los ion-item-->
+                <ion-menu-toggle>
+                    <ion-item [routerLink]="['/characters']">
+                        <ion-label>Personajes</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle>
+                    <ion-item>
+                        <ion-label>Inventario</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle>
+                    <ion-item>
+                        <ion-label>Misiones</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

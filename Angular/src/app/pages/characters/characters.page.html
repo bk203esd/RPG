@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-menu-button slot="start"></ion-menu-button>
+        <ion-title>Personajes</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let char of characters">
+        <ion-card-header *ngIf="char">
+            <ion-card-subtitle>Slot {{char.char_name}}</ion-card-subtitle>
+            <ion-card-title>{{ char.description }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-chip>
+                <ion-label>{{ char.lvl }}</ion-label>
+            </ion-chip>
+        </ion-card-content>
+    </ion-card>
+    <ion-fab-button>+</ion-fab-button>
+</ion-content>
