@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-menu-button slot="start"></ion-menu-button>
+        <ion-title>Misiones</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let quest of quests">
+        <ion-card-header *ngIf="quest">
+            <ion-card-title>{{ quest.quest_name }}</ion-card-title>
+            <ion-card-subtitle>{{ quest.description }}</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
+</ion-content>

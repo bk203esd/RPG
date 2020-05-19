@@ -9,50 +9,21 @@ import {take} from "rxjs/operators";
 })
 export class CharacterService {
 
-    private _characters: BehaviorSubject<Character[]> = new BehaviorSubject<Character[]>([
-        {
-            'char_name': 'guillelf',
-            'description': 'Elfo + Guillem',
-            'xp': '15',
-            'lvl': '25',
-            'max_hp': '100',
-            'attack': '25',
-            'defense': '25',
-            'accuracy': '25',
-            'gold': '25',
-            'clas_name': 'Arquero',
-            'race_name': 'Elfo',
-            'user_name': 'bk203esd'
-        },
-        {
-            'char_name': 'Jordiorc',
-            'description': 'Orco + Jordi',
-            'xp': '80',
-            'lvl': '10',
-            'max_hp': '100',
-            'attack': '15',
-            'defense': '17',
-            'accuracy': '3',
-            'gold': '2',
-            'clas_name': 'Guerrero',
-            'race_name': 'Orco',
-            'user_name': 'bk203esd'
-        }
-    ]);
+    private _characters: BehaviorSubject<Character[]> = new BehaviorSubject<Character[]>([]);
 
     private _character: BehaviorSubject<Character> = new BehaviorSubject<Character>({
-        'char_name': 'guillelf',
-        'description': 'Elfo + Guillem',
-        'xp': '15',
-        'lvl': '25',
-        'max_hp': '100',
-        'attack': '25',
-        'defense': '25',
-        'accuracy': '25',
-        'gold': '25',
-        'clas_name': 'Arquero',
-        'race_name': 'Elfo',
-        'user_name': 'bk203esd'
+        'char_name': '',
+        'description': '',
+        'xp': '',
+        'lvl': '',
+        'max_hp': '',
+        'attack': '',
+        'defense': '',
+        'accuracy': '',
+        'gold': '',
+        'clas_name': '',
+        'race_name': '',
+        'user_name': ''
     });
 
     constructor(private http: HttpClient) {
@@ -66,8 +37,7 @@ export class CharacterService {
         return this._character.asObservable();
     }
 
-    getCharactersByUserRequest(user_name = null) {
-        if (user_name != null && user_name != '') {
+    getCharactersByUserRequest() {
             const tokenData = JSON.parse(window.localStorage.getItem('okta-token-storage'));
             const token = tokenData.accessToken.value;
 
@@ -80,7 +50,7 @@ export class CharacterService {
                     }
             };
 
-            this.http.get('http://localhost/PHP/RPG/wscharacters/' + user_name, headers).subscribe((response: any) => {
+            this.http.get('http://localhost/RPG/PHP/wscharacters', headers).subscribe((response: any) => {
                 for (let i = 0; i < response.length; i++) {
                     let characters = response[i];
                     this._characters.pipe(take(1)).subscribe((chars) => {
@@ -89,7 +59,6 @@ export class CharacterService {
                 }
 
             });
-        }
     }
 
     getCharacterByNameRequest(char_name = null) {

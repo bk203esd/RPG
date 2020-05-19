@@ -1,6 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Character} from "../../models/character";
 import {Chart} from 'chart.js';
+import {ActivatedRoute, Router} from "@angular/router";
+import {CharacterService} from "../../services/character.service";
 
 @Component({
     selector: 'app-character',
@@ -11,7 +13,11 @@ export class CharacterPage implements OnInit {
 
     @ViewChild('canvasChart', {static: true}) canvasChart: ElementRef;
 
-    constructor() {
+    constructor(
+        private route: Router,
+        private activatedRoute: ActivatedRoute,
+        private characterService: CharacterService
+    ) {
     }
 
     public token: String;
@@ -19,12 +25,12 @@ export class CharacterPage implements OnInit {
     character: Character = {
         'char_name': 'guillelf',
         'description': 'Elfo + Guillem',
-        'xp': '15',
-        'lvl': '25',
+        'xp': 500,
+        'lvl': 25,
         'max_hp': 100,
-        'attack': 40,
+        'attack': 90,
         'defense': 75,
-        'accuracy': 30,
+        'accuracy': 50,
         'gold': '25',
         'clas_name': 'Arquero',
         'race_name': 'Elfo',
@@ -33,16 +39,16 @@ export class CharacterPage implements OnInit {
 
     createChart() {
         let statsData = [];
-        statsData.push(this.character.max_hp);
         statsData.push(this.character.attack);
         statsData.push(this.character.defense);
         statsData.push(this.character.accuracy);
+        statsData.push(this.character.max_hp);
         console.log(statsData);
 
         let chart = new Chart(this.canvasChart.nativeElement, {
             type: 'radar',
             data: {
-                labels: ['MaxHP', 'Attack', 'Defense', 'Accuracy'],
+                labels: ['Accuracy', 'Attack', 'Defense', 'MaxHP'],
                 datasets: [{
                     label: 'Stats',
                     data: statsData,
@@ -59,12 +65,28 @@ export class CharacterPage implements OnInit {
             },
             options: {
                 responsive: true,
-                display: true
+                display: true,
+                scale: {
+                    angleLines: {
+                        display: false
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                    }
+                }
             }
         });
     }
 
     ngOnInit() {
+        this.activatedRoute.paramMap.subscribe((paramMap) => {
+            const char_name = paramMap.get('char_name');
+
+            this.characterService.getCharacterByNameRequest(char_name);
+            this.characterService.character.subscribe((char) => {
+                this.character = char;
+            });
+        });
         this.createChart();
     }
 

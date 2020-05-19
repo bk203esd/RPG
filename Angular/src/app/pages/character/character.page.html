@@ -6,5 +6,46 @@
 </ion-header>
 
 <ion-content>
-    <canvas #canvasChart height="250"></canvas>
+    <ion-card>
+        <ion-header>
+            <ion-card-title>Descripción</ion-card-title>
+            <ion-card-subtitle>{{ character.description }}</ion-card-subtitle>
+        </ion-header>
+    </ion-card>
+    <ion-card>
+        <ion-header>
+            <ion-card-title>Raza</ion-card-title>
+            <ion-card-subtitle>{{ character.race_name }}</ion-card-subtitle>
+        </ion-header>
+    </ion-card>
+    <ion-card>
+        <ion-header>
+            <ion-card-title>Classe</ion-card-title>
+            <ion-card-subtitle>{{ character.clas_name }}</ion-card-subtitle>
+        </ion-header>
+    </ion-card>
+    <ion-card>
+        <ion-header>
+            <ion-card-title>Nivel</ion-card-title>
+            <ion-card-subtitle>{{ character.lvl }}</ion-card-subtitle>
+        </ion-header>
+    </ion-card>
+    <ion-card>
+        <ion-header>
+            <ion-card-title>Experiencia</ion-card-title>
+            <ion-label>{{ character.xp }} / {{ 100*character.lvl }}</ion-label>
+            <ion-progress-bar value="{{ character.xp/(100*character.lvl) }}"></ion-progress-bar>
+        </ion-header>
+    </ion-card>
+    <ion-card>
+        <ion-header>
+            <ion-card-title>Oro</ion-card-title>
+            <ion-card-subtitle>{{ character.gold }}</ion-card-subtitle>
+        </ion-header>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <canvas #canvasChart height="250"></canvas>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

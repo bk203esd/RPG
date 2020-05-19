@@ -6,16 +6,33 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngFor="let char of characters">
-        <ion-card-header *ngIf="char">
-            <ion-card-subtitle>Slot {{char.char_name}}</ion-card-subtitle>
-            <ion-card-title>{{ char.description }}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-chip>
-                <ion-label>{{ char.lvl }}</ion-label>
-            </ion-chip>
-        </ion-card-content>
-    </ion-card>
+    <div *ngFor="let char of characters">
+        <ion-card *ngIf="char" [routerLink]="['/character', char.char_name]">
+            <ion-card-header>
+                <ion-card-subtitle>Slot {{char.char_name}}</ion-card-subtitle>
+                <ion-card-title>{{ char.description }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content *ngIf="char.lvl >= 0 && char.lvl <= 25">
+                <ion-chip color="tertiary">
+                    <ion-label>{{ char.lvl }}</ion-label>
+                </ion-chip>
+            </ion-card-content>
+            <ion-card-content *ngIf="char.lvl >= 26 && char.lvl <= 50">
+                <ion-chip color="success">
+                    <ion-label>{{ char.lvl }}</ion-label>
+                </ion-chip>
+            </ion-card-content>
+            <ion-card-content *ngIf="char.lvl >= 51 && char.lvl <= 75">
+                <ion-chip color="warning">
+                    <ion-label>{{ char.lvl }}</ion-label>
+                </ion-chip>
+            </ion-card-content>
+            <ion-card-content *ngIf="char.lvl >= 76 && char.lvl <= 100">
+                <ion-chip color="danger">
+                    <ion-label>{{ char.lvl }}</ion-label>
+                </ion-chip>
+            </ion-card-content>
+        </ion-card>
+    </div>
     <ion-fab-button>+</ion-fab-button>
 </ion-content>
