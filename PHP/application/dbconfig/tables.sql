@@ -24,7 +24,7 @@ CREATE TABLE races
     description       text,
     multiply_hp       INT,
     multiply_attack   INT,
-    multiply_defence  INT,
+    multiply_defense  INT,
     multiply_accuracy INT,
     PRIMARY KEY (race_name)
 );
@@ -32,13 +32,13 @@ CREATE TABLE races
 
 CREATE TABLE classes
 (
-    class_name        VARCHAR(60),
+    clas_name        VARCHAR(60),
     description       text,
     multiply_hp       INT,
     multiply_attack   INT,
-    multiply_defence  INT,
+    multiply_defense  INT,
     multiply_accuracy INT,
-    PRIMARY KEY (class_name)
+    PRIMARY KEY (clas_name)
 );
 
 
@@ -53,7 +53,7 @@ CREATE TABLE characters
     defense     INT,
     accuracy    INT,
     gold        BIGINT,
-    class_name  VARCHAR(60) REFERENCES classes (class_name),
+    clas_name  VARCHAR(60) REFERENCES classes (clas_name),
     race_name   VARCHAR(60) REFERENCES races (race_name),
     user_name   VARCHAR(60) REFERENCES users (user_name),
     PRIMARY KEY (char_name)
@@ -65,7 +65,7 @@ CREATE TABLE items
     item_name         VARCHAR(60),
     description       text,
     attack_increase   INT,
-    defence_increase  INT,
+    defense_increase  INT,
     accuracy_increase INT,
     price             INT,
     PRIMARY KEY (item_name)
@@ -78,7 +78,7 @@ CREATE TABLE monsters
     description  text,
     hp           INT,
     attack       INT,
-    defence      INT,
+    defense      INT,
     accuracy     INT,
     gold         INT,
     PRIMARY KEY (monster_name)
@@ -137,13 +137,13 @@ CREATE TABLE recipes
 INSERT INTO users (user_name, email)
 VALUES ('bk203esd', 'bk203esd@gmail.com');
 
-INSERT INTO races (race_name, description, multiply_hp, multiply_attack, multiply_defence, multiply_accuracy)
+INSERT INTO races (race_name, description, multiply_hp, multiply_attack, multiply_defense, multiply_accuracy)
 VALUES ('Humano', 'Viven en la superficie', 1, 1, 1, 1);
 
-INSERT INTO classes (class_name, description, multiply_hp, multiply_attack, multiply_defence, multiply_accuracy)
+INSERT INTO classes (clas_name, description, multiply_hp, multiply_attack, multiply_defense, multiply_accuracy)
 VALUES ('Shura', 'Monje', 1, 1, 1, 1);
 
-INSERT INTO characters (char_name, description, xp, lvl, max_hp, attack, defense, accuracy, gold, class_name, race_name,
+INSERT INTO characters (char_name, description, xp, lvl, max_hp, attack, defense, accuracy, gold, clas_name, race_name,
                         user_name)
 VALUES ('Freya', 'Monje de bk203esd', 500, 15, 500, 25, 25, 25, 200, 'Humano', 'Shura', 'bk203esd');
 
