@@ -49,6 +49,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+// TODO Preguntar Response ruta -> http://localhost/RPG/PHP/wsdone/Freya
+$route['wsdone/(:any)'] = 'ws/WS_QuestController/getQuestsDoneByName/$1';
+$route['wsquest/(:any)'] = 'ws/WS_QuestController/getQuest/$1';
+$route['wsitem/(:any)'] = 'ws/WS_ItemController/getItem/$1';
+$route['wsclass/(:any)'] = 'ws/WS_ClassController/getClass/$1';
+$route['wscharacter/(:any)'] = 'ws/WS_CharacterController/getCharacter/$1';
+$route['wsquests'] = 'ws/WS_QuestController/getQuests';
+$route['wsitems'] = 'ws/WS_ItemController/getItems';
+$route['wsclasses'] = 'ws/WS_ClassController/getClasses';
+$route['wsraces'] = 'ws/WS_RaceController/getRaces';
+$route['wscharacters'] = 'ws/WS_CharacterController/getCharacters';
 $route['quest/(:any)'] = 'web/QuestController/viewQuest/$1';
 $route['item/(:any)'] = 'web/ItemController/viewItem/$1';
 $route['monster/(:any)'] = 'web/MonsterController/viewMonster/$1';
