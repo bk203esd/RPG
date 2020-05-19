@@ -2,49 +2,19 @@
 
 use \chriskacerguis\RestServer\RestController;
 
+require_once(APPPATH . 'controllers/ws/WS_MainController.php');
+
 class WS_CharacterController extends WS_MainController
 {
-	public function __construct()
+	public function __construct($config = 'rest')
 	{
-		parent::__construct();
+		parent::__construct($config);
 
-		$this->load->model('classe');
-		$this->load->model('race');
+		$this->load->model('character');
+		$this->load->model('user');
 	}
 
-	public function getClasses_get()
-	{
-		list($msg, $code) = $this->checkAuthorization();
-
-		if ($code !== true) {
-			parent::setHeaders();
-			$this->response($msg, $code);
-			return;
-		}
-		$classes = $this->classe->getClasses();
-
-		if (count($classes) == 0) {
-			$httpcode = RestController::HTTP_NOT_FOUND;
-			$message = array(
-				'msg' => 'Classes no encontradas.'
-			);
-		} else {
-			$message = [];
-			$httpcode = RestController::HTTP_OK;
-			foreach ($classes as $clas) {
-				array_push($message, $clas->toArray());
-			}
-		}
-		parent::setHeaders();
-		$this->response($message, $httpcode);
-	}
-
-	public function getClasses_options()
-	{
-		parent::setOptions();
-	}
-
-	public function getRaces_get()
+	public function getCharacters_get()
 	{
 		list($msg, $code) = $this->checkAuthorization();
 
@@ -53,30 +23,58 @@ class WS_CharacterController extends WS_MainController
 			$this->response($msg, $code);
 			return;
 		}
-		$races = $this->race->getRaces();
 
-		if (count($races) == 0) {
+		$user = $this->user->getUserEmail($msg);
+
+		if ($user == null || $user->getEmail() != $msg) {
 			$httpcode = RestController::HTTP_NOT_FOUND;
 			$message = array(
-				'msg' => 'Razas no encontradas.'
+				'msg' => 'Correu ' . $msg . ' no trobat'
 			);
 		} else {
 			$message = [];
 			$httpcode = RestController::HTTP_OK;
-			foreach ($races as $race) {
-				array_push($message, $race->toArray());
+			$characters = $this->character->getCharactersByUser($user->getUserName());
+			foreach ($characters as $character) {
+				array_push($message, $character->toArray());
 			}
 		}
 		parent::setHeaders();
 		$this->response($message, $httpcode);
 	}
 
-	public function getRaces_options()
+	public function getCharacters_options()
 	{
 		parent::setOptions();
 	}
 
-	public function createCharacter_post(){
+	public function getCharacter_get($char_name)
+	{
+		list($msg, $code) = $this->checkAuthorization();
 
+		if ($code !== true) {
+			parent::setHeaders();
+			$this->response($msg, $code);
+			return;
+		}
+
+		$character = $this->character->getCharacterByName($char_name);
+
+		if ($character == null) {
+			$httpcode = RestController::HTTP_NOT_FOUND;
+			$message = array(
+				'msg' => 'Character ' . $msg . ' no encontrado.'
+			);
+		} else {
+			$httpcode = RestController::HTTP_OK;
+			$message = $character->toArray();
+		}
+		parent::setHeaders();
+		$this->response($message, $httpcode);
+	}
+
+	public function getCharacter_options($char_name)
+	{
+		parent::setOptions();
 	}
 }
