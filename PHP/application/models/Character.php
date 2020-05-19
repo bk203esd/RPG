@@ -148,6 +148,22 @@ class Character extends CI_Model
 		else return $this->createCharacterFromRawObject($query->result()[0]);
 	}
 
+	public function getCharactersByUser($user_name)
+	{
+		$condition = "user_name = '" . $user_name . "'";
+		$this->db->where($condition);
+		$query = $this->db->get('characters');
+		$characters = [];
+		if ($query->num_rows() <= 0) return null;
+		else {
+			foreach ($query->result() as $data) {
+				$character = $this->createCharacterFromRawObject($data);
+				array_push($characters, $character);
+			}
+			return $characters;
+		}
+	}
+
 	public function addNewCharacter(
 		$char_name, $description,
 		$xp = 0,

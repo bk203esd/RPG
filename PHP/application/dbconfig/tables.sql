@@ -32,7 +32,7 @@ CREATE TABLE races
 
 CREATE TABLE classes
 (
-    clas_name        VARCHAR(60),
+    clas_name         VARCHAR(60),
     description       text,
     multiply_hp       INT,
     multiply_attack   INT,
@@ -53,7 +53,7 @@ CREATE TABLE characters
     defense     INT,
     accuracy    INT,
     gold        BIGINT,
-    clas_name  VARCHAR(60) REFERENCES classes (clas_name),
+    clas_name   VARCHAR(60) REFERENCES classes (clas_name),
     race_name   VARCHAR(60) REFERENCES races (race_name),
     user_name   VARCHAR(60) REFERENCES users (user_name),
     PRIMARY KEY (char_name)
@@ -81,6 +81,7 @@ CREATE TABLE monsters
     defense      INT,
     accuracy     INT,
     gold         INT,
+    xp_give      INT,
     PRIMARY KEY (monster_name)
 );
 
@@ -145,5 +146,10 @@ VALUES ('Shura', 'Monje', 1, 1, 1, 1);
 
 INSERT INTO characters (char_name, description, xp, lvl, max_hp, attack, defense, accuracy, gold, clas_name, race_name,
                         user_name)
-VALUES ('Freya', 'Monje de bk203esd', 500, 15, 500, 25, 25, 25, 200, 'Humano', 'Shura', 'bk203esd');
+VALUES ('Freya', 'Monje de bk203esd', 500, 15, 500, 25, 25, 25, 200, 'Shura', 'Humano', 'bk203esd');
 
+INSERT INTO monsters (monster_name, description, hp, attack, defense, accuracy, gold, xp_give)
+VALUES ('Dragón', 'Ser mitologico escupefuego', 1000, 100, 100, 100, 500, 1000);
+
+INSERT INTO items (item_name, description, attack_increase, defense_increase, accuracy_increase, price)
+VALUES ('Casco', 'Cubre la cabeza', 1, 1, 1, 1);
