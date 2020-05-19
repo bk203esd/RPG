@@ -2,6 +2,8 @@
 
 use \chriskacerguis\RestServer\RestController;
 
+require_once(APPPATH . 'controllers/ws/WS_MainController.php');
+
 class WS_ClassController extends WS_MainController
 {
 	public function __construct()

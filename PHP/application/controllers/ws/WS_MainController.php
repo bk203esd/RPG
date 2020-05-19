@@ -1,6 +1,6 @@
 <?php
 
-use \chriskacerguis\RestServer\RestController;
+use chriskacerguis\RestServer\RestController;
 
 //Ús del namespace
 
@@ -9,9 +9,12 @@ require_once(APPPATH . 'libraries/codeigniter-restserver/src/Format.php');
 
 class WS_MainController extends RestController
 {
+
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->load->model('user');
 	}
 
 	protected function checkAuthorization()
@@ -59,8 +62,7 @@ class WS_MainController extends RestController
 
 			//Comprovar contra la BD
 			$email = $json_result['email'];
-			// TODO BBDD registrar
-			$correct = $this->client->checkClientEmail($email);
+			$correct = $this->user->checkUserEmail($email);
 			if (!$correct) {
 				$message = "Invalid user";
 				$httpcode = RestController::HTTP_UNAUTHORIZED;

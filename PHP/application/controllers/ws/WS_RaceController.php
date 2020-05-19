@@ -2,6 +2,8 @@
 
 use \chriskacerguis\RestServer\RestController;
 
+require_once(APPPATH . 'controllers/ws/WS_MainController.php');
+
 class WS_RaceController extends WS_MainController
 {
 	public function __construct()
@@ -35,5 +37,9 @@ class WS_RaceController extends WS_MainController
 		}
 		parent::setHeaders();
 		$this->response($message, $httpcode);
+	}
+
+	public function getRaces_options(){
+		parent::setOptions();
 	}
 }
