@@ -28,4 +28,11 @@
 			<a href="<?php echo base_url('monsteradd'); ?>" class="w3-bar-item w3-button">Nuevo Monstruo</a>
 		</div>
 	</div>
+	<div class="w3-dropdown-hover">
+		<button class="w3-button">Misión</button>
+		<div class="w3-dropdown-content w3-bar-block w3-card-4">
+			<a href="<?php echo base_url('quests'); ?>" class="w3-bar-item w3-button">Lista Misión</a>
+			<a href="<?php echo base_url('questadd'); ?>" class="w3-bar-item w3-button">Nueva Misión</a>
+		</div>
+	</div>
 </div>

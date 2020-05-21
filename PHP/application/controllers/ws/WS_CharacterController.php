@@ -57,9 +57,7 @@ class WS_CharacterController extends WS_MainController
 			$this->response($msg, $code);
 			return;
 		}
-
 		$character = $this->character->getCharacterByName($char_name);
-
 		if ($character == null) {
 			$httpcode = RestController::HTTP_NOT_FOUND;
 			$message = array(

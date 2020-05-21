@@ -24,11 +24,10 @@ class WS_QuestController extends WS_MainController
 		}
 
 		$quests = $this->quest->getQuests();
-
 		if (count($quests) == 0) {
 			$httpcode = RestController::HTTP_NOT_FOUND;
 			$message = array(
-				'msg' => 'Razas no encontradas.'
+				'msg' => 'Quest no encontradas.'
 			);
 		} else {
 			$message = [];

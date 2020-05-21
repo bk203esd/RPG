@@ -43,7 +43,6 @@ class QuestController extends CI_Controller
 		$this->form_validation->set_rules('quest_name', 'Nombre', 'required');
 		$this->form_validation->set_rules('description', 'Descripción', 'required');
 		$this->form_validation->set_rules('item_reward', 'Item', 'required');
-		$this->form_validation->set_rules('quantity_item', 'Quanity', 'required');
 		$this->form_validation->set_rules('gold_reward', 'Oro', 'required');
 		$this->form_validation->set_rules('xp_reward', 'Experiencia', 'required');
 		$this->form_validation->set_rules('repeatable', 'Repetible', 'required');
@@ -62,7 +61,6 @@ class QuestController extends CI_Controller
 				$this->input->post('quest_name'),
 				$this->input->post('description'),
 				$this->input->post('item_reward'),
-				$this->input->post('quantity_item'),
 				$this->input->post('gold_reward'),
 				$this->input->post('xp_reward'),
 				$this->input->post('repeatable')
@@ -72,7 +70,7 @@ class QuestController extends CI_Controller
 	}
 
 	public function viewQuest($name){
-		$contentData['quest'] = $this->monster->getQuestByName($name);
+		$contentData['quest'] = $this->quest->getQuestByName($name);
 		$headerData['uname'] = $this->session->userdata('username');
 
 		$this->load->view('templates/header', $headerData);

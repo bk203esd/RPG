@@ -16,10 +16,6 @@
 				<td><input class="w3-input" type="text" name="item_reward"><br></td>
 			</tr>
 			<tr>
-				<td><label>Cantidad:</label></td>
-				<td><input class="w3-input" type="text" name="quantity_item"><br></td>
-			</tr>
-			<tr>
 				<td><label>Oro:</label></td>
 				<td><input class="w3-input" type="text" name="gold_reward"><br></td>
 			</tr>

@@ -22,8 +22,8 @@
 		</div>
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
-				<div class="w3-xxlarge">Cantidad</div>
-				<input type="text" value="<?php echo $quest->getQuantityItem(); ?>" class="w3-margin w3-xlarge w3-input">
+				<div class="w3-xxlarge">Monstruo</div>
+				<input type="text" value="<?php echo $quest->getMonsterName(); ?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 	</div>
@@ -36,22 +36,16 @@
 		</div>
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
-				<div class="w3-xxlarge">Monstruo</div>
-				<input type="text" value="<?php echo $quest->getMonsterName(); ?>" class="w3-margin w3-xlarge w3-input">
+				<div class="w3-xxlarge">Experiencia</div>
+				<input type="text" value="<?php echo $quest->getXpReward(); ?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 	</div>
 	<div class="w3-row-padding w3-margin w3-margin-top">
 		<div class="w3-half">
 			<div class="w3-card w3-container w3-center">
-				<div class="w3-xxlarge">Experiencia</div>
-				<input type="text" value="<?php echo $quest->getXpReward(); ?>" class="w3-margin w3-xlarge w3-input">
-			</div>
-		</div>
-		<div class="w3-half">
-			<div class="w3-card w3-container w3-center">
 				<div class="w3-xxlarge">Repetible</div>
-				<input type="text" value="<?php echo $quest->getXpGive(); ?>" class="w3-margin w3-xlarge w3-input">
+				<input type="text" value="<?php echo $quest->getRepeatable(); ?>" class="w3-margin w3-xlarge w3-input">
 			</div>
 		</div>
 	</div>

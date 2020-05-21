@@ -153,3 +153,6 @@ VALUES ('Dragón', 'Ser mitologico escupefuego', 1000, 100, 100, 100, 500, 1000)
 
 INSERT INTO items (item_name, description, attack_increase, defense_increase, accuracy_increase, price)
 VALUES ('Casco', 'Cubre la cabeza', 1, 1, 1, 1);
+
+INSERT INTO quests (quest_name, description, item_reward, gold_reward, monster_name, xp_reward, repeatable)
+VALUES ('Dragonicidio', 'Mata al dragón malvado', 'Casco', 500, 'Dragón', 5000, true);

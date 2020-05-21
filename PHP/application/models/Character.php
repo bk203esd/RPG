@@ -103,7 +103,7 @@ class Character extends CI_Model
 	{
 		$character = new Character();
 
-		$character->char_name = $data->clas_name;
+		$character->char_name = $data->char_name;
 		$character->description = $data->description;
 		$character->xp = $data->xp;
 		$character->lvl = $data->lvl;
@@ -122,7 +122,7 @@ class Character extends CI_Model
 	public function toArray()
 	{
 		return array(
-			'char_name' => $this->clas_name,
+			'char_name' => $this->char_name,
 			'description' => $this->description,
 			'xp' => $this->xp,
 			'lvl' => $this->lvl,
@@ -141,7 +141,7 @@ class Character extends CI_Model
 	{
 		$condition = "UPPER(char_name) = UPPER('" . $name . "')";
 		$this->db->where($condition);
-		$query = $this->db->get('chracters');
+		$query = $this->db->get('characters');
 
 		// Comprovar si hi ha algun resultat
 		if ($query->num_rows() != 1) return null;

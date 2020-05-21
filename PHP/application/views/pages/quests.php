@@ -6,7 +6,7 @@
 			<th>Nombre</th>
 			<th>Descripción</th>
 			<th>Item</th>
-			<th>Cantidad</th>
+			<th>Monstre</th>
 			<th>Oro</th>
 			<th>Experiencia</th>
 			<th>Repetible</th>
@@ -18,7 +18,7 @@
 							<td> " . $quest->getQuestName() . "</td>
 							<td> " . $quest->getDescription() . "</td>
 							<td> " . $quest->getItemReward() . "</td>
-							<td> " . $quest->getQuantityItem() . "</td>
+							<td> " . $quest->getMonsterName() . "</td>
 							<td> " . $quest->getGoldReward() . "</td>
 							<td> " . $quest->getXpReward() . "</td>
 							<td> " . $quest->getRepeatable() . "</td>
