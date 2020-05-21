@@ -20,19 +20,23 @@ const routes: Routes = [
     {path: 'implicit/callback', component: OktaCallbackComponent},
     {
         path: 'character',
-        loadChildren: () => import('./pages/character/character.module').then(m => m.CharacterPageModule)
+        loadChildren: () => import('./pages/character/character.module').then(m => m.CharacterPageModule),
+        canActivate: [OktaAuthGuard]
     },
     {
         path: 'characters',
-        loadChildren: () => import('./pages/characters/characters.module').then(m => m.CharactersPageModule)
+        loadChildren: () => import('./pages/characters/characters.module').then(m => m.CharactersPageModule),
+        canActivate: [OktaAuthGuard]
     },
     {
         path: 'quests',
-        loadChildren: () => import('./pages/quests/quests.module').then(m => m.QuestsPageModule)
+        loadChildren: () => import('./pages/quests/quests.module').then(m => m.QuestsPageModule),
+        canActivate: [OktaAuthGuard]
     },
     {
         path: 'quest',
-        loadChildren: () => import('./pages/quest/quest.module').then(m => m.QuestPageModule)
+        loadChildren: () => import('./pages/quest/quest.module').then(m => m.QuestPageModule),
+        canActivate: [OktaAuthGuard]
     },
 ];
 

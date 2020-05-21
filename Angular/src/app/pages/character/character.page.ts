@@ -23,18 +23,18 @@ export class CharacterPage implements OnInit {
     public token: String;
 
     character: Character = {
-        'char_name': 'guillelf',
-        'description': 'Elfo + Guillem',
-        'xp': 500,
-        'lvl': 25,
-        'max_hp': 100,
-        'attack': 90,
-        'defense': 75,
-        'accuracy': 50,
-        'gold': '25',
-        'clas_name': 'Arquero',
-        'race_name': 'Elfo',
-        'user_name': 'bk203esd'
+        'char_name': '',
+        'description': '',
+        'xp': 0,
+        'lvl': 0,
+        'max_hp': 0,
+        'attack': 0,
+        'defense': 0,
+        'accuracy': 0,
+        'gold': 0,
+        'clas_name': '',
+        'race_name': '',
+        'user_name': ''
     };
 
     createChart() {
@@ -43,7 +43,6 @@ export class CharacterPage implements OnInit {
         statsData.push(this.character.defense);
         statsData.push(this.character.accuracy);
         statsData.push(this.character.max_hp);
-        console.log(statsData);
 
         let chart = new Chart(this.canvasChart.nativeElement, {
             type: 'radar',
@@ -85,9 +84,9 @@ export class CharacterPage implements OnInit {
             this.characterService.getCharacterByNameRequest(char_name);
             this.characterService.character.subscribe((char) => {
                 this.character = char;
+                this.createChart();
             });
         });
-        this.createChart();
     }
 
 }

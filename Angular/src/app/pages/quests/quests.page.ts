@@ -22,7 +22,6 @@ export class QuestsPage implements OnInit {
         this.questService.getQuestsRequest();
         this.questService.quests.subscribe((que) => {
             this.quests = que;
-            console.log(this.quests);
         })
     }
 

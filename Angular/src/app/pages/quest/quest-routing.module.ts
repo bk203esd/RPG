@@ -5,7 +5,7 @@ import { QuestPage } from './quest.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':quest_name',
     component: QuestPage
   }
 ];

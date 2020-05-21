@@ -22,7 +22,6 @@ export class CharactersPage implements OnInit {
         this.characterService.getCharactersByUserRequest();
         this.characterService.characters.subscribe((chars) => {
             this.characters = chars;
-            console.log(this.characters);
         })
     }
 

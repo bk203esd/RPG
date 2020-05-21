@@ -14,13 +14,13 @@ export class CharacterService {
     private _character: BehaviorSubject<Character> = new BehaviorSubject<Character>({
         'char_name': '',
         'description': '',
-        'xp': '',
-        'lvl': '',
-        'max_hp': '',
-        'attack': '',
-        'defense': '',
-        'accuracy': '',
-        'gold': '',
+        'xp': 0,
+        'lvl': 0,
+        'max_hp': 0,
+        'attack': 0,
+        'defense': 0,
+        'accuracy': 0,
+        'gold': 0,
         'clas_name': '',
         'race_name': '',
         'user_name': ''
@@ -61,8 +61,7 @@ export class CharacterService {
             });
     }
 
-    getCharacterByNameRequest(char_name = null) {
-        if (char_name != null && char_name != '') {
+    getCharacterByNameRequest(char_name) {
             // TOKENS + HEADERS
             const tokenData = JSON.parse(window.localStorage.getItem('okta-token-storage'));
             const token = tokenData.accessToken.value;
@@ -76,13 +75,12 @@ export class CharacterService {
                     }
             };
 
-            this.http.get('http://localhost/PHP/RPG/wscharacter/' + char_name, headers).subscribe((response: any) => {
+            this.http.get('http://localhost/RPG/PHP/wscharacter/' + char_name, headers).subscribe((response: any) => {
                 let character = response;
                 this._character.pipe(take(1)).subscribe((cha) => {
                     this._character.next(cha = character);
                 });
 
             });
-        }
     }
 }
